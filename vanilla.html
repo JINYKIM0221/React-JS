@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body style>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+    function countup(){
+        counter = counter + 1;
+        rerender();
+    }
+    function rerender(){
+        ReactDOM.render(<Container />,root);
+    }
+    const Container = () => (
+        <div>
+            <h3>Total clicks: {counter}</h3>
+            <button onClick={countup}>Click me</button>
+            
+        </div>
+    );    
+    rerender();
+</script>
+</html>
+
+
+
+<!-- React를 이용한 html요소 만들기 -->
+<!-- <body style>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> reactJS를 import함
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>react-dom을 import함
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>babel을 import함 babel:브라우저가 읽을 수 있게 코드를 번역해줌
+<script type="text/babel">
+    const root = document.getElementById("root"); 위에 쓴 div id="root"를 가져옴
+    const Title = () => (<h3 id="title" onMouseEnter={() => console.log("mouse enter")}>Hello</h3>);
+    Title이라는 변수에 react를 이용해서 함수 만듦
+    = () => : function이랑 같은 맥락
+    const Button = () => (<button style={{backgroundColor:"tomato",}} onClick={() => console.log("I'm")}>Click me</button>);
+    const Container = 
+        <div>
+            <Title />
+            <Button />
+        </div> Container안에 위에서 만든 Title함수와 Button함수를 넣음
+        *< />이 안에 들어가는 함수는 대문자로 시작해야함 아니면 html 태그로 인식
+    ReactDOM.render(Container,root);
+</script> -->
