@@ -15,22 +15,24 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countup(){
-        counter = counter + 1;
-        rerender();
-    }
-    function rerender(){
-        ReactDOM.render(<Container />,root);
-    }
-    const Container = () => (
-        <div>
-            <h3>Total clicks: {counter}</h3>
-            <button onClick={countup}>Click me</button>
-            
-        </div>
-    );    
-    rerender();
+    function App() {
+        const [counter, setCounter] = React.useState(0);
+        // React.useState(0) : 배열 [a,b]두개 주는데 a는 data(=0)을, b는 data를 바꿀 때 사용하는 함수? Js에서 const Y = ["a","b","c","d""f"] 이것을 const [] = Y;로 씀으로써 원하는 요소를 가져올 수있다
+        // EX)const [1] = Y; > "a"
+        //React.useState()를 이용하면 setCounter함수를 이용해 counter가 바뀔 때마다 컴포넌트 전체가 생성될 것이다 새로운 값을 가지고
+        const onClick = () => {
+            setCounter((current) => current + 1);
+
+        };
+        return (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={onClick}>Click me</button>
+            </div>
+            //return부분은 브라우저에 나타날 장치
+        );
+    }  
+    ReactDOM.render(<App />,root);
 </script>
 </html>
 
@@ -49,11 +51,14 @@
     Title이라는 변수에 react를 이용해서 함수 만듦
     = () => : function이랑 같은 맥락
     const Button = () => (<button style={{backgroundColor:"tomato",}} onClick={() => console.log("I'm")}>Click me</button>);
-    const Container = 
+    const App = 
         <div>
             <Title />
             <Button />
-        </div> Container안에 위에서 만든 Title함수와 Button함수를 넣음
+        </div> App안에 위에서 만든 Title함수와 Button함수를 넣음
         *< />이 안에 들어가는 함수는 대문자로 시작해야함 아니면 html 태그로 인식
-    ReactDOM.render(Container,root);
+    ReactDOM.render(App,root);
 </script> -->
+
+
+
