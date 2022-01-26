@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+    </head>
+    <body style>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script type="text/babel">
+        function Btn({good , fontSize}){
+            return <button style={{
+                backgroundColor: "tomato",
+                color:"white",
+                padding: "10px 20px",
+                border:0,
+                borderRadius: 10,
+                fontSize:fontSize,
+
+            }}>{good}</button>;
+        }
+        function ConfirmBtn(){
+           
+            return <button>confirm</button>;
+        }
+        Btn.propTypes = {
+            text: PropTypes.string,
+            fontSize: PropTypes.number,
+
+        };
+        function App() {
+            const [Value, setValue] = React.useState("Save Changes");
+            return (
+                <div>
+                    <Btn good="Save Changes" fontSize={15} />
+                    <Btn text={14} fontSize={"15"} />
+
+                </div>
+            );
+        }
+    
+   
+
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />,root);
+    </script>
+</html>
